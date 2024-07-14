@@ -33,6 +33,12 @@ export const fontFamilyOptions: OptionType[] & {
 	},
 ];
 
+export const fontSizeOptions: OptionType[] = [
+	{ title: '18px', value: '18px', className: 'font-size-18' },
+	{ title: '25px', value: '25px', className: 'font-size-25' },
+	{ title: '38px', value: '38px', className: 'font-size-38' },
+];
+
 export const fontColors: OptionType[] = [
 	{
 		title: 'Черный',
@@ -160,12 +166,6 @@ export const contentWidthArr: OptionType[] = [
 		className: 'width-narrow',
 		optionClassName: 'option-narrow',
 	},
-];
-
-export const fontSizeOptions: OptionType[] = [
-	{ title: '18px', value: '18px', className: 'font-size-18' },
-	{ title: '25px', value: '25px', className: 'font-size-25' },
-	{ title: '38px', value: '38px', className: 'font-size-38' },
 ];
 
 export const defaultArticleState = {
