@@ -1,9 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
 import { Article } from 'components/article';
 import { ArticleParamsForm } from 'components/article-params-form';
 import { useArticle } from 'src/context/ArticleContext';
-
 import 'src/styles/index.scss';
 import styles from 'src/styles/index.module.scss';
 
@@ -25,9 +23,11 @@ export const App = (): JSX.Element => {
 	} as React.CSSProperties;
 
 	return (
-		<div className={clsx(styles.main)} style={customStyles}>
+		<div style={customStyles}>
 			<ArticleParamsForm />
-			<Article />
+			<main className={styles.main}>
+				<Article />
+			</main>
 		</div>
 	);
 };
