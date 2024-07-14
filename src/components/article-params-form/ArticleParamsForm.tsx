@@ -5,7 +5,7 @@ import { Text } from 'components/text';
 import { Select } from 'components/select';
 import { RadioGroup } from 'components/radio-group';
 import { Separator } from 'components/separator';
-import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClose';
+import { useClose } from 'components/select/hooks/useClose';
 import {
 	backgroundColors,
 	contentWidthArr,
@@ -36,9 +36,9 @@ export const ArticleParamsForm = (): JSX.Element => {
 		applyStyles();
 	};
 
-	useOutsideClickClose({
+	useClose({
 		isOpen: isMenuOpen,
-		onChange: () => setIsMenuOpen(false),
+		onClose: () => setIsMenuOpen(false),
 		rootRef: ref,
 	});
 
