@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import clsx from 'clsx';
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Text } from 'components/text';
@@ -23,8 +22,9 @@ import styles from './ArticleParamsForm.module.scss';
  * Компонент формы для настройки параметров статьи.
  */
 export const ArticleParamsForm = (): JSX.Element => {
-	const { stylesSelected, setStylesSelected, resetStyles } = useArticle();
-	const [isOpen, setOpen] = React.useState(false);
+	const { stylesSelected, setStylesSelected, applyStyles, resetStyles } =
+		useArticle();
+	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	const handleOnChange =
@@ -33,19 +33,25 @@ export const ArticleParamsForm = (): JSX.Element => {
 
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		applyStyles();
 	};
 
 	useOutsideClickClose({
-		isOpen,
-		onChange: () => setOpen(false),
+		isOpen: isMenuOpen,
+		onChange: () => setIsMenuOpen(false),
 		rootRef: ref,
 	});
 
 	return (
 		<>
-			<ArrowButton onClick={() => setOpen(!isOpen)} state={isOpen} />
+			<ArrowButton
+				onClick={() => setIsMenuOpen(!isMenuOpen)}
+				state={isMenuOpen}
+			/>
 			<aside
-				className={clsx(styles.container, { [styles.container_open]: isOpen })}
+				className={`${styles.container} ${
+					isMenuOpen ? styles.container_open : ''
+				}`}
 				ref={ref}>
 				<form className={styles.form} onSubmit={handleFormSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>
@@ -68,7 +74,7 @@ export const ArticleParamsForm = (): JSX.Element => {
 					<Select
 						selected={stylesSelected.fontColor}
 						options={fontColors}
-						placeholder='Черный>'
+						placeholder='Черный'
 						onChange={handleOnChange('fontColor')}
 						title='цвет шрифта'
 					/>
@@ -76,7 +82,7 @@ export const ArticleParamsForm = (): JSX.Element => {
 					<Select
 						selected={stylesSelected.backgroundColor}
 						options={backgroundColors}
-						placeholder='Белый>'
+						placeholder='Белый'
 						onChange={handleOnChange('backgroundColor')}
 						title='цвет фона'
 					/>
