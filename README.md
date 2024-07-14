@@ -16,87 +16,74 @@
 
 ```plaintext
 src/
-├── components/
-│   ├── app/
-│   │   ├── App.module.scss
-│   │   └── App.tsx
-│   │
-│   ├── arrow-button/
-│   │   ├── ArrowButton.module.scss
-│   │   ├── ArrowButton.stories.tsx
-│   │   ├── ArrowButton.tsx
-│   │   └── index.tsx
-│   │
-│   ├── article/
-│   │   ├── Article.module.scss
-│   │   ├── Article.tsx
-│   │   └── index.tsx
-│   │
-│   ├── article-params-form/
-│   │   ├── ArticleParamsForm.module.scss
-│   │   ├── ArticleParamsForm.tsx
-│   │   └── index.tsx
-│   │
-│   ├── button/
-│   │   ├── Button.module.scss
-│   │   ├── Button.stories.tsx
-│   │   ├── Button.tsx
-│   │   └── index.tsx
-│   │
-│   ├── radio-group/
-│   │   ├── hooks/
-│   │   ├── index.tsx
-│   │   ├── Option.tsx
-│   │   ├── RadioGroup.module.scss
-│   │   ├── RadioGroup.stories.tsx
-│   │   └── RadioGroup.tsx
-│   │
-│   ├── select/
-│   │   ├── helpers/
-│   │   │   └── isFontFamilyClass.ts
-│   │   ├── hooks/
-│   │   │   ├── useEnterOptionSubmit.tsx
-│   │   │   ├── useEnterSubmit.ts
-│   │   │   └── useOutsideClickClose.ts
-│   │   ├── index.tsx
-│   │   ├── Option.tsx
-│   │   ├── Select.module.scss
-│   │   ├── Select.stories.tsx
-│   │   └── Select.tsx
-│   │
-│   ├── separator/
-│   │   ├── index.module.scss
-│   │   ├── index.tsx
-│   │   ├── Separator.stories.tsx
-│   │   └── Separator.tsx
-│   │
-│   ├── story-decorator/
-│   │   ├── index.tsx
-│   │   ├── StoryDecorator.module.scss
-│   │   └── StoryDecorator.tsx
-│   │
-│   └── text/
-│       ├── index.module.scss
-│       ├── index.tsx
-│       ├── Text.stories.tsx
-│       └── Text.tsx
-│
-├── constants/
-│   └── articleProps.ts
-│
-├── context/
-│   └── ArticleContext.tsx
-│
-├── fonts/
-│   ├── font-files/
-│   └── font.scss
-│
-├── images/
-├── styles/
-│   ├── index.scss
-│
-├── custom.d.ts
-├── index.tsx
+    📁components/
+        📁app/
+            📄 App.module.scss
+            📄 App.tsx
+        📁arrow-button/
+            📄 ArrowButton.module.scss
+            📄 ArrowButton.stories.tsx
+            📄 ArrowButton.tsx
+            📄 index.tsx
+        📁article/
+            📄 Article.module.scss
+            📄 Article.tsx
+            📄 index.tsx
+        📁article-params-form/
+            📄 ArticleParamsForm.module.scss
+            📄 ArticleParamsForm.tsx
+            📄 index.tsx
+        📁button/
+            📄 Button.module.scss
+            📄 Button.stories.tsx
+            📄 Button.tsx
+            📄 index.tsx
+        📁radio-group/
+            📁hooks/
+            📄 index.tsx
+            📄 Option.tsx
+            📄 RadioGroup.module.scss
+            📄 RadioGroup.stories.tsx
+            📄 RadioGroup.tsx
+        📁select/
+            📁helpers/
+                📄 isFontFamilyClass.ts
+            📁hooks/
+                📄 useEnterOptionSubmit.tsx
+                📄 useEnterSubmit.ts
+                📄 useOutsideClickClose.ts
+            📄 index.tsx
+            📄 Option.tsx
+            📄 Select.module.scss
+            📄 Select.stories.tsx
+            📄 Select.tsx
+        📁separator/
+            📄 index.module.scss
+            📄 index.tsx
+            📄 Separator.stories.tsx
+            📄 Separator.tsx
+        📁story-decorator/
+            📄 index.tsx
+            📄 StoryDecorator.module.scss
+            📄 StoryDecorator.tsx
+        📁text/
+            📄 index.module.scss
+            📄 index.tsx
+            📄 Text.stories.tsx
+            📄 Text.tsx
+    📁constants/
+        📄 articleProps.ts
+    📁context/
+        📄 ArticleContext.tsx
+    📁fonts/
+        📁font-files/
+        📄 font.scss
+    📁images/
+    📁styles/
+        📄 index.scss
+    📄 custom.d.ts
+    📄 index.tsx
+
 ```
 
 ## Установка и запуск
