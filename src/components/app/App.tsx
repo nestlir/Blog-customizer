@@ -11,15 +11,15 @@ import styles from 'src/styles/index.module.scss';
  * @returns {JSX.Element} Корневой элемент приложения.
  */
 export const App = (): JSX.Element => {
-	const { stylesSelected } = useArticle();
+	const { appliedStyles } = useArticle();
 
-	// Кастомные стили для статьи, основанные на состоянии
+	// Кастомные стили для статьи, основанные на примененных параметрах
 	const customStyles = {
-		'--font-family': stylesSelected.fontFamilyOption.value,
-		'--font-size': stylesSelected.fontSizeOption.value,
-		'--font-color': stylesSelected.fontColor.value,
-		'--container-width': stylesSelected.contentWidth.value,
-		'--bg-color': stylesSelected.backgroundColor.value,
+		'--font-family': appliedStyles.fontFamilyOption.value,
+		'--font-size': appliedStyles.fontSizeOption.value,
+		'--font-color': appliedStyles.fontColor.value,
+		'--container-width': appliedStyles.contentWidth.value,
+		'--bg-color': appliedStyles.backgroundColor.value,
 	} as React.CSSProperties;
 
 	return (

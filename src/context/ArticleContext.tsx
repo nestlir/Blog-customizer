@@ -6,7 +6,9 @@ import {
 
 type ArticleContextType = {
 	stylesSelected: ArticleStateType;
+	appliedStyles: ArticleStateType;
 	setStylesSelected: (styles: ArticleStateType) => void;
+	applyStyles: () => void;
 	resetStyles: () => void;
 };
 
@@ -26,12 +28,26 @@ type ArticleProviderProps = {
 
 export const ArticleProvider = ({ children }: ArticleProviderProps) => {
 	const [stylesSelected, setStylesSelected] = useState(defaultArticleState);
+	const [appliedStyles, setAppliedStyles] = useState(defaultArticleState);
 
-	const resetStyles = () => setStylesSelected(defaultArticleState);
+	const applyStyles = () => {
+		setAppliedStyles(stylesSelected);
+	};
+
+	const resetStyles = () => {
+		setStylesSelected(defaultArticleState);
+		setAppliedStyles(defaultArticleState);
+	};
 
 	return (
 		<ArticleContext.Provider
-			value={{ stylesSelected, setStylesSelected, resetStyles }}>
+			value={{
+				stylesSelected,
+				appliedStyles,
+				setStylesSelected,
+				applyStyles,
+				resetStyles,
+			}}>
 			{children}
 		</ArticleContext.Provider>
 	);
