@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import clsx from 'clsx';
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
@@ -8,47 +8,31 @@ import { RadioGroup } from 'components/radio-group';
 import { Separator } from 'components/separator';
 import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClose';
 import {
-	ArticleStateType,
 	backgroundColors,
 	contentWidthArr,
-	defaultArticleState,
 	fontColors,
 	fontFamilyOptions,
 	fontSizeOptions,
 	OptionType,
 } from 'src/constants/articleProps';
-import styles from './ArticleParamsForm.module.scss';
+import { useArticle } from 'src/context/ArticleContext';
 
-type FormStates = {
-	onResetClick: () => void;
-	onSubmitClick: (p: ArticleStateType) => void;
-};
+import styles from './ArticleParamsForm.module.scss';
 
 /**
  * Компонент формы для настройки параметров статьи.
- *
- * @param {FormStates} props - Свойства компонента, включающие функции для сброса и отправки формы.
  */
-export const ArticleParamsForm = ({
-	onResetClick,
-	onSubmitClick,
-}: FormStates) => {
-	const [state, setState] = useState(defaultArticleState);
-	const [isOpen, setOpen] = useState(false);
+export const ArticleParamsForm = (): JSX.Element => {
+	const { stylesSelected, setStylesSelected, resetStyles } = useArticle();
+	const [isOpen, setOpen] = React.useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	const handleOnChange =
-		(field: keyof ArticleStateType) => (value: OptionType) =>
-			setState((prevState) => ({ ...prevState, [field]: value }));
+		(field: keyof typeof stylesSelected) => (value: OptionType) =>
+			setStylesSelected({ ...stylesSelected, [field]: value });
 
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		onSubmitClick(state);
-	};
-
-	const handleResetStyles = () => {
-		onResetClick();
-		setState(defaultArticleState);
 	};
 
 	useOutsideClickClose({
@@ -68,21 +52,21 @@ export const ArticleParamsForm = ({
 						Задайте параметры
 					</Text>
 					<Select
-						selected={state.fontFamilyOption}
+						selected={stylesSelected.fontFamilyOption}
 						options={fontFamilyOptions}
 						placeholder='Open Sans'
 						onChange={handleOnChange('fontFamilyOption')}
 						title='шрифт'
 					/>
 					<RadioGroup
-						selected={state.fontSizeOption}
+						selected={stylesSelected.fontSizeOption}
 						name='fontSize'
 						options={fontSizeOptions}
 						onChange={handleOnChange('fontSizeOption')}
 						title='размер шрифта'
 					/>
 					<Select
-						selected={state.fontColor}
+						selected={stylesSelected.fontColor}
 						options={fontColors}
 						placeholder='Черный>'
 						onChange={handleOnChange('fontColor')}
@@ -90,21 +74,21 @@ export const ArticleParamsForm = ({
 					/>
 					<Separator />
 					<Select
-						selected={state.backgroundColor}
+						selected={stylesSelected.backgroundColor}
 						options={backgroundColors}
 						placeholder='Белый>'
 						onChange={handleOnChange('backgroundColor')}
 						title='цвет фона'
 					/>
 					<Select
-						selected={state.contentWidth}
+						selected={stylesSelected.contentWidth}
 						options={contentWidthArr}
 						placeholder='Широкий'
 						onChange={handleOnChange('contentWidth')}
 						title='ширина контента'
 					/>
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' type='reset' onClick={handleResetStyles} />
+						<Button title='Сбросить' type='reset' onClick={resetStyles} />
 						<Button title='Применить' type='submit' />
 					</div>
 				</form>
