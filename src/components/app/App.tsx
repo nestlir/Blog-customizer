@@ -2,7 +2,6 @@ import React from 'react';
 import { Article } from 'components/article';
 import { ArticleParamsForm } from 'components/article-params-form';
 import { useArticle } from 'src/context/ArticleContext';
-
 import 'src/styles/index.scss';
 import styles from 'src/styles/index.module.scss';
 
