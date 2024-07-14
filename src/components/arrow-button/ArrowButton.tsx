@@ -1,29 +1,37 @@
 import arrow from 'src/images/arrow.svg';
-
 import styles from './ArrowButton.module.scss';
 import clsx from 'clsx';
 
-/** Функция для обработки открытия/закрытия формы */
-export type ArrowButtonProps = {
-	onClick: OnClick;
-	state: boolean;
-};
-
+/** Тип для функции обработчика клика */
 export type OnClick = () => void;
 
-export const ArrowButton = (props: ArrowButtonProps) => {
+/** Пропсы для компонента ArrowButton */
+export type ArrowButtonProps = {
+	onClick: OnClick; // Функция для обработки клика
+	state: boolean; // Состояние открытия/закрытия
+};
+
+/**
+ * Компонент кнопки со стрелкой для открытия/закрытия формы
+ *
+ * @param {ArrowButtonProps} props - Свойства компонента
+ * @returns {JSX.Element} JSX элемент кнопки со стрелкой
+ */
+export const ArrowButton = (props: ArrowButtonProps): JSX.Element => {
 	const { onClick, state } = props;
 
+	// Стиль контейнера кнопки, изменяется в зависимости от состояния
 	const arrowButtonStyle = clsx(styles.container, {
 		[styles.container_open]: state,
 	});
 
+	// Стиль иконки стрелки, изменяется в зависимости от состояния
 	const arrowImgStyle = clsx(styles.arrow, {
 		[styles.arrow_open]: state,
 	});
 
 	return (
-		/* Не забываем указаывать role и aria-label атрибуты для интерактивных элементов */
+		// Указываем role и aria-label атрибуты для интерактивных элементов
 		<div
 			onClick={onClick}
 			role='button'
