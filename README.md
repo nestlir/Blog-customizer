@@ -1,3 +1,154 @@
+Конечно! Вот обновленный README файл, включающий новые секции:
+
+# Blog Customizer
+
+## Описание проекта
+
+**Blog Customizer** — это React-приложение, которое позволяет пользователям настраивать стили для статей. Пользователи могут изменять шрифт, размер шрифта, цвет шрифта, цвет фона и ширину контента через удобный интерфейс. Проект демонстрирует использование React с TypeScript и контекстом для создания интерактивного пользовательского интерфейса.
+
+## Функциональность
+
+- **Настройка параметров статьи**: Позволяет пользователям изменять шрифт, размер шрифта, цвет шрифта, цвет фона и ширину контента.
+- **Сброс настроек**: Возможность сбросить настройки к значениям по умолчанию.
+- **Применение изменений**: Применение выбранных стилей к статье в реальном времени.
+
+## Структура проекта
+
+```plaintext
+src/
+├── components/
+│   ├── app/
+│   │   ├── App.module.scss
+│   │   └── App.tsx
+│   │
+│   ├── arrow-button/
+│   │   ├── ArrowButton.module.scss
+│   │   ├── ArrowButton.stories.tsx
+│   │   ├── ArrowButton.tsx
+│   │   └── index.tsx
+│   │
+│   ├── article/
+│   │   ├── Article.module.scss
+│   │   ├── Article.tsx
+│   │   └── index.tsx
+│   │
+│   ├── article-params-form/
+│   │   ├── ArticleParamsForm.module.scss
+│   │   ├── ArticleParamsForm.tsx
+│   │   └── index.tsx
+│   │
+│   ├── button/
+│   │   ├── Button.module.scss
+│   │   ├── Button.stories.tsx
+│   │   ├── Button.tsx
+│   │   └── index.tsx
+│   │
+│   ├── radio-group/
+│   │   ├── hooks/
+│   │   ├── index.tsx
+│   │   ├── Option.tsx
+│   │   ├── RadioGroup.module.scss
+│   │   ├── RadioGroup.stories.tsx
+│   │   └── RadioGroup.tsx
+│   │
+│   ├── select/
+│   │   ├── helpers/
+│   │   │   └── isFontFamilyClass.ts
+│   │   ├── hooks/
+│   │   │   ├── useEnterOptionSubmit.tsx
+│   │   │   ├── useEnterSubmit.ts
+│   │   │   └── useOutsideClickClose.ts
+│   │   ├── index.tsx
+│   │   ├── Option.tsx
+│   │   ├── Select.module.scss
+│   │   ├── Select.stories.tsx
+│   │   └── Select.tsx
+│   │
+│   ├── separator/
+│   │   ├── index.module.scss
+│   │   ├── index.tsx
+│   │   ├── Separator.stories.tsx
+│   │   └── Separator.tsx
+│   │
+│   ├── story-decorator/
+│   │   ├── index.tsx
+│   │   ├── StoryDecorator.module.scss
+│   │   └── StoryDecorator.tsx
+│   │
+│   └── text/
+│       ├── index.module.scss
+│       ├── index.tsx
+│       ├── Text.stories.tsx
+│       └── Text.tsx
+│
+├── constants/
+│   └── articleProps.ts
+│
+├── context/
+│   └── ArticleContext.tsx
+│
+├── fonts/
+│   ├── font-files/
+│   └── font.scss
+│
+├── images/
+├── styles/
+│   ├── index.scss
+│
+├── custom.d.ts
+├── index.tsx
+```
+
+## Установка и запуск
+
+### Предварительные требования
+
+- Node.js (рекомендуется версия 14.x или выше)
+- npm или yarn
+
+### Установка зависимостей
+
+```bash
+npm install
+# или
+yarn install
+```
+
+### Запуск приложения
+
+```bash
+npm start
+# или
+yarn start
+```
+
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+
+## Использование
+
+### Настройка параметров статьи
+
+1. Нажмите на кнопку с стрелкой, чтобы открыть панель настроек.
+2. Измените параметры статьи, такие как шрифт, размер шрифта, цвет шрифта, цвет фона и ширину контента.
+3. Нажмите кнопку "Применить", чтобы сохранить изменения.
+4. Для сброса параметров к значениям по умолчанию нажмите кнопку "Сбросить".
+
+### Компоненты
+
+- **App**: Основной компонент приложения.
+- **Article**: Компонент, отображающий статью.
+- **ArticleParamsForm**: Форма для настройки параметров статьи.
+- **ArrowButton**: Кнопка для открытия/закрытия панели настроек.
+- **Button**: Универсальная кнопка.
+- **RadioGroup**: Группа радиокнопок для выбора параметров.
+- **Select**: Выпадающий список для выбора параметров.
+- **Separator**: Разделитель для разделения секций формы.
+- **Text**: Компонент для отображения текста.
+
+### Контексты
+
+- **ArticleContext**: Контекст для управления состоянием стилей статьи, включая функции для их обновления и сброса.
+
 # Проектная работа: Вёрстка проекта
 
 ## Шаг первый. Изучаем имеющиеся компоненты
@@ -6,25 +157,25 @@
 
 Для запуска Storybook выполните:
 
-```
+```bash
 npm run storybook
 ```
 
 Для запуска линтера для стилей выполните:
 
-```
+```bash
 npm run stylelint
 ```
 
 Для запуска линтера выполните:
 
-```
+```bash
 npm run lint
 ```
 
 Для запуска форматтера выполните:
 
-```
+```bash
 npm run format
 ```
 
