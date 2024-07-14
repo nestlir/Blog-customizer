@@ -25,34 +25,59 @@ type FormStates = {
 	onSubmitClick: (p: ArticleStateType) => void;
 };
 
+/**
+ * Компонент формы для настройки параметров статьи.
+ *
+ * @param {FormStates} props - Свойства компонента, включающие функции для сброса и отправки формы.
+ */
 export const ArticleParamsForm = (props: FormStates) => {
 	const { onResetClick, onSubmitClick } = props;
 
-	const [state, setState] = useState(defaultArticleState);
+	const [state, setState] = useState(defaultArticleState); // Состояние формы с параметрами статьи
 
+	/**
+	 * Обработчик изменения значения в форме.
+	 *
+	 * @param {keyof ArticleStateType} field - Поле, которое изменяется.
+	 * @returns {function} Функция для обновления состояния формы.
+	 */
 	const handleOnChange = (field: keyof ArticleStateType) => {
 		return (value: OptionType) => {
 			setState((prevState) => ({ ...prevState, [field]: value }));
 		};
 	};
 
+	/**
+	 * Обработчик отправки формы.
+	 *
+	 * @param {React.FormEvent<HTMLFormElement>} event - Событие отправки формы.
+	 */
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		onSubmitClick(state);
 	};
 
+	/**
+	 * Обработчик сброса параметров стилей.
+	 */
 	const handleResetStyles = () => {
 		onResetClick();
 		setState(defaultArticleState);
 	};
 
-	const [isOpen, setOpen] = useState(false);
-	const ref = useRef<HTMLDivElement | null>(null);
+	const [isOpen, setOpen] = useState(false); // Состояние открытия/закрытия меню
+	const ref = useRef<HTMLDivElement | null>(null); // Ссылка на элемент меню
 
+	/**
+	 * Обработчик клика по кнопке открытия/закрытия меню.
+	 */
 	const handleClick = () => {
 		return setOpen(!isOpen);
 	};
 
+	/**
+	 * Обработчик закрытия меню.
+	 */
 	const handleClose = () => {
 		setOpen(false);
 	};
