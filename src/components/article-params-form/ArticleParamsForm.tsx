@@ -25,7 +25,7 @@ import styles from './ArticleParamsForm.module.scss';
 export const ArticleParamsForm = (): JSX.Element => {
 	const { stylesSelected, setStylesSelected, applyStyles, resetStyles } =
 		useArticle();
-	const [isOpen, setOpen] = React.useState(false);
+	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	const handleOnChange =
@@ -39,16 +39,21 @@ export const ArticleParamsForm = (): JSX.Element => {
 	};
 
 	useClose({
-		isOpen,
-		onClose: () => setOpen(false),
+		isOpen: isMenuOpen,
+		onClose: () => setIsMenuOpen(false),
 		rootRef: ref,
 	});
 
 	return (
 		<>
-			<ArrowButton onClick={() => setOpen(!isOpen)} state={isOpen} />
+			<ArrowButton
+				onClick={() => setIsMenuOpen(!isMenuOpen)}
+				state={isMenuOpen}
+			/>
 			<aside
-				className={clsx(styles.container, { [styles.container_open]: isOpen })}
+				className={clsx(styles.container, {
+					[styles.container_open]: isMenuOpen,
+				})}
 				ref={ref}>
 				<form className={styles.form} onSubmit={handleFormSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>
