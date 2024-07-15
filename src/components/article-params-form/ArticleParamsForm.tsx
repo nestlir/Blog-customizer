@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import clsx from 'clsx';
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Text } from 'components/text';
@@ -24,12 +25,13 @@ import styles from './ArticleParamsForm.module.scss';
 export const ArticleParamsForm = (): JSX.Element => {
 	const { stylesSelected, setStylesSelected, applyStyles, resetStyles } =
 		useArticle();
-	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+	const [isOpen, setOpen] = React.useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	const handleOnChange =
-		(field: keyof typeof stylesSelected) => (value: OptionType) =>
+		(field: keyof typeof stylesSelected) => (value: OptionType) => {
 			setStylesSelected({ ...stylesSelected, [field]: value });
+		};
 
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -37,21 +39,16 @@ export const ArticleParamsForm = (): JSX.Element => {
 	};
 
 	useClose({
-		isOpen: isMenuOpen,
-		onClose: () => setIsMenuOpen(false),
+		isOpen,
+		onClose: () => setOpen(false),
 		rootRef: ref,
 	});
 
 	return (
 		<>
-			<ArrowButton
-				onClick={() => setIsMenuOpen(!isMenuOpen)}
-				state={isMenuOpen}
-			/>
+			<ArrowButton onClick={() => setOpen(!isOpen)} state={isOpen} />
 			<aside
-				className={`${styles.container} ${
-					isMenuOpen ? styles.container_open : ''
-				}`}
+				className={clsx(styles.container, { [styles.container_open]: isOpen })}
 				ref={ref}>
 				<form className={styles.form} onSubmit={handleFormSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>

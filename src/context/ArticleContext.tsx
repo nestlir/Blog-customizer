@@ -31,6 +31,7 @@ export const ArticleProvider = ({ children }: ArticleProviderProps) => {
 	const [appliedStyles, setAppliedStyles] = useState(defaultArticleState);
 
 	const applyStyles = () => {
+		console.log('Applying styles:', stylesSelected);
 		setAppliedStyles(stylesSelected);
 	};
 
