@@ -1,54 +1,38 @@
-# Проектная работа: Вёрстка проекта
+# Blog Customizer — Configurable Reading Experience
 
-## Шаг первый. Изучаем имеющиеся компоненты
+> Interactive article customization panel demonstrating state management, reusable UI components and CSS variables.
 
-[Макет проекта](https://www.figma.com/file/FEeiiGLOsE7ktXbPpBxYoD/Custom-dropdown?type=design&node-id=0%3A1&mode=design&t=eXRJnWC6Xsuw0qR4-1)
+## Overview
 
-Для запуска Storybook выполните:
+A frontend interface that lets readers customize an article's visual presentation. Settings are edited in a side panel and applied only after confirmation, while reset restores the initial state.
 
-```
+## Key features
+
+- collapsible settings sidebar;
+- controlled form state separate from rendered page state;
+- Apply / Reset workflow;
+- CSS custom properties for typography, width, color and spacing;
+- click-outside and keyboard-friendly interaction;
+- reusable component library;
+- Storybook-driven component development.
+
+## Engineering decisions
+
+The important product behavior is the separation between **draft settings** and **applied settings**. This prevents every form change from immediately mutating the reading experience and makes the interaction predictable.
+
+## Quality tooling
+
+```bash
 npm run storybook
-```
-
-Для запуска линтера для стилей выполните:
-
-```
-npm run stylelint
-```
-
-Для запуска линтера выполните:
-
-```
 npm run lint
-```
-
-Для запуска форматтера выполните:
-
-```
+npm run stylelint
 npm run format
 ```
 
-### Функциональные требования
+## Stack
 
-- При нажатии на «стрелку» открывается сайдбар с настройками, при повторном нажатии или клике вне сайдбар закрывается.
-- При изменении настроек в сайдбаре они не применяются сразу.
-- После нажатия на «применить» стили применяются к статье.
-- При нажатии «сбросить» настройки в форме сбрасываются на начальные, которые были при открытии страницы, и стили применяются к статье.
-- Настройки устанавливаются через CSS-переменные, которые уже есть в стилях и установлены в коде в дефолтные значения.
+**React · TypeScript · CSS Custom Properties · Storybook · ESLint · Stylelint**
 
-## Шаг второй. Реализация формы
+## Context
 
-Продумайте следующие моменты, прежде чем приступать к коду: 
-
-- как будет организована композиция,
-- где вы будете хранить состояние,
-- как передавать данные между формой и страницей.
-
-Затем реализуйте механику открытия-закрытия панели с формой, после этого можно будет временно зафиксировать ее пропсом для удобства реализации.
-
-После этого реализуйте форму из имеющихся компонент согласно макету.
-
-
-## Шаг третий. Обеспечьте передачу данных между формой и страницей
-
-Реализуйте по отдельности сохранение состояния страницы и состояние формы. Обеспечьте применение нового состояния после нажатия на «применить».
+Originally created during frontend training; presented here as a focused case study in state modeling, component architecture and interactive UI behavior.
